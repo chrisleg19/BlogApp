@@ -56,6 +56,7 @@ app.get("/", (req, res)=>{
 
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
+    
 
     mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true, 
