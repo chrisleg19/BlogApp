@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    background-color: #D8D8D8;
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+h1 {
+  font-family: Silkscreen;
+  margin:0;
+  /* margin-bottom: .25em; */
+  padding: .5em;
+  text-align: center;
+  text-shadow: 1px 1px 1px orange;
+}
+
+/* a {
+  text-decoration: none;
+}
+
+a:link, a:visited, a:active{
+  color: orange;
+  text-shadow: 1px 1px 2px black;
+  font-size: 1.25rem;
+}
+
+a:hover {
+  color: ghostwhite;
+} */
+
+.formCont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.form{
+  width:auto;
+  line-height: 1.5rem;
+}
+
+.form h5{
+  margin:0;
+}
+
+.titleInput{
+  width: 99%;
+}
+
+.authorInput{
+  width: 99%;
+}
+
+.profilePicInput{
+  width: 99%;
+}
+
+.sponsoredBx{
+  display:flex;
+}
+
+.submitBtnCont{
+  display: flex;
+  justify-content: center;
+}
+
+.submitBtn{
+  margin-top:.25em;
+  width: 50%;
+  background-color: green;
+  color: ghostwhite;
+  font-size:1rem;
+  font-weight: bold;
+  padding:.25em;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 2px #182747;
+}

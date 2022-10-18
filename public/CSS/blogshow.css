@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    background-color: #D8D8D8;
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+h1 {
+  font-family: Silkscreen;
+  margin:0;
+  margin-bottom: .25em;
+  padding: 1em;
+  text-align: center;
+  text-shadow: 1px 1px 1px orange;
+}
+
+/* a {
+  text-decoration: none;
+}
+
+a:link, a:visited, a:active{
+  color: orange;
+}
+
+a:hover {
+  color: ghostwhite;
+} */
+
+.infoCont{
+  display: flex;
+  justify-content:space-between;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.info{
+line-height: 2em;
+}
+
+.info h2, h4{
+  margin: 0;
+}
+
+.writtenBy{
+  display:flex;
+  align-items: baseline;
+ 
+}
+.writtenBy h4{
+  margin-right: .5em;
+}
+.writtenBy p{
+  margin:0;
+}
+
+.likes{
+  display: flex;
+  align-items: baseline;
+  
+}
+.likes p{
+  margin:0;
+}
+
+.likes h4{
+  margin-right: .5em;
+}
+
+.sponsored p{
+  margin: 0;
+}
+
+.sponsored span{
+  font-weight: bold;
+}
+
+.createdCont{
+  display: flex;
+  align-items: baseline;
+}
+
+.createdCont h4{
+  margin-right: .5em;
+}
+
+.createdCont p{
+  margin:0;
+}
+
+
+.profilePic{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.blogBody{
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin: 2em;
+}

@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.navBar{
+    background-color: #562B08;
+    color: orange;
+    text-decoration: none;
+    text-shadow: .5px .5px .5px #D8D8D8;
+    font-size: 1.5em;
+    display: flex;
+    justify-content:space-evenly;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    font-weight: bold;
+    font-family: Poppins;
+}
+
+a {
+    text-decoration: none;
+  }
+  
+  a:link, a:visited, a:active{
+    color: orange;
+  }
+  
+  a:hover {
+    color: ghostwhite;
+  }
+
+  .welcome{
+    font-family: Silkscreen;
+    display: flex;
+    justify-content: center;
+    text-shadow: 1px 1px 1px orange;
+  }

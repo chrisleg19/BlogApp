@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    background-color: #D8D8D8;
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+h1 {
+  font-family: Silkscreen;
+  margin:0;
+  margin-bottom: .25em;
+  padding: 1em;
+  text-align: center;
+  text-shadow: 1px 1px 1px orange;
+}
+
+/* a {
+  text-decoration: none;
+}
+
+a:link, a:visited, a:active{
+  color: orange;
+  text-shadow: 1px 1px 2px black;
+  font-size: 1.25rem;
+}
+
+a:hover {
+  color: ghostwhite;
+} */
+
+.blogsCont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.blogsPreview{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .25em;
+    margin:.5em;
+    list-style: none;
+    width:400px;
+    border:solid 2px #967E76;
+    line-height: .5em;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #182747;
+    overflow: none;
+}
+
+.bpHeaders{
+    display: flex;
+    align-items: baseline;
+    margin:0;
+    padding:0;
+    height: auto;
+}
+
+.bpHeaders a:link{
+  color: #182747;
+  text-shadow: 1px 1px 2px orange;
+  font-size: 1.25rem;
+}
+
+.bpHeaders a:visited{
+  color: #182747;
+  text-shadow: 1px 1px 2px orange;
+  font-size: 1.25rem;
+}
+
+.bpHeaders a:active{
+  color: #182747;
+  text-shadow: 1px 1px 2px orange;
+  font-size: 1.25rem;
+}
+
+.bpHeaders a{
+  color: #182747;
+  font-size: 1.25rem;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px orange;
+}
+
+.bpHeaders a:hover{
+  color: ghostwhite;
+}
+
+
+
+.bpHeaders h3{
+    margin:0;
+    padding: .5em;
+}
+
+.authImg{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;  
+}
+
+.authImg:hover{
+  border: solid 2px #967E76;
+  overflow: hidden;
+  box-shadow: 3px 3px 3px #182747;
+  cursor: pointer;
+}
+
+.createNewDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.createNewBtn{
+    background-color:#562B08 ;
+    text-shadow: .5px .5px .5px #D8D8D8;
+    padding: .5em;
+    border-radius: 10px;
+    font-family: Poppins;
+}
+
+
+

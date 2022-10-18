@@ -1,0 +1,188 @@
+Slides:
+https://ps-rtt-sei.herokuapp.com/mod-2/week-8/day-4/slides/ 
+
+Popular Database Engines:
+https://db-engines.com/en/ranking 
+
+NOTE: Server-Side Rendering apps will have models, views and controllers.  Apps that don't use server side rendering will have a front end React app, and the back end will have Models and Controllers (no view)
+
+==================================================================================================================
+
+
+NPM Installs in terminal:
+
+1. npm init -y
+2. npm i express
+3. npm i morgan  (npm i -D morgan) 
+4. npm i mongoose
+5. npm i dotenv
+6. npm i method-override
+7. npm i express-react-views  
+8. npm i react-dom
+
+
+============================
+USING POSTMAN FOR ROUTE TESTING WITHOUT FRONTEND VIEWS
+
+Testing GET Request with Postman
+--------------------------------
+1. Go to workspace
+2. Go to Collections
+3. Click + sign to create a new workspace
+4. Select GET request 
+5. Type in http://localhost:3000 
+6. Click send
+-
+7. In bottom 1/2 of screen, select Body
+8. Select Pretty
+9. You should see your get request (Ex: Hello from BlogRouter)
+
+Testing POST Request with Postman
+---------------------------------
+1. Change GET to POST
+2. Select JSON data Type (instead of "Text")
+3. Input your object data 
+    Note: Data must be formatted as ex. below:
+    {
+    "title": "Deep Thoughts",
+    "body": "Friends, I am the realest coder alive",
+    "author": "Arthur"
+    }
+4. Click send
+-
+5. In bottom 1/2 of screen, select Body
+6. Select Pretty
+7. Select JSON
+8. Data should be displayed in Postman & MongoDB
+    Postman display of data:
+    {
+    "title": "Deep Thoughts",
+    "body": "Friends, I am the realest coder alive",
+    "author": "Arthur",
+    "likes": 0,
+    "sponsored": false,
+    "_id": "6345b0b8b021b3e1cfa61acb",
+    "created_at": "2022-10-11T18:06:48.336Z",
+    "updatedAt": "2022-10-11T18:06:48.336Z",
+    "__v": 0
+    }
+
+Testing PUT (update) Request.
+ ----------------------------
+1. input the :id after the /blog/
+ ex: http://localhost:3000/blog/6345b0b8b021b3e1cfa61acb
+2. change post to PUT
+3. edit the data
+4. send
+
+Testing DELETE Request 
+----------------------
+1. input the :id after the /blog/
+2. change put to DELETE
+3. send
+
+
+=================================
+
+Using controllers folder to store/use routes
+
+https://expressjs.com/en/guide/routing.html 
+
+Use: express.Router
+
+Ex: BlogRouter.js
+
+
+=========================================================================
+
+Setting up static files (Express)
+
+http://expressjs.com/en/starter/static-files.html#serving-static-files-in-express 
+
+
+
+
+
+===================================================
+
+Adding CSS hover effect: 
+
+1. Add hover to your css file using a class name.
+2. In your view, add "className" to your element in the view page.
+
+
+
+=======================
+sessions to check if authors are logged in:
+
+example: {blog.user === session.user ? div with form  :  div with nothing}
+
+
+
+================================================
+
+JWT Sessions 
+https://ps-rtt-sei.herokuapp.com/mod-2/week-9/day-3/slides/ 
+
+Authentication
+
+This is typically done by comparing a password a user has entered with one they provided at signup. The only wrinkle is for security purposes we will want to encrypt the password using something called bCrypt.
+
+Authorization
+
+There are two main ways to achieve this:
+
+Session Based Auth: This is a better choice if all resources the logged in user needs to access is on the same backend server. In this scenario a user logs in and a cookie is created for the browser session (until they close the browser or logout). This cookie will identify a tiny packet of data on our server we can then access with anything we'd like to store in it like the users login status or user information.
+The data is on the server, the cookie allows us to know which data belongs to which logged in user.
+
+
+
+1. Install in terminal:
+
+npm install bcryptjs express-session connect-mongo
+
+In package.json:
+
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^4.6.0",
+    "express-session": "^1.17.3",
+
+bcryptjs: a pre-compiled version of bcrypt which we will use to encrypt passwords
+
+    https://www.npmjs.com/package/bcryptjs 
+
+express-session: middleware for creating session cookies
+
+    https://www.npmjs.com/package/express-session 
+
+connect-mongo: plugin that will allow express session to save session data in our mongo database
+
+
+=======================================================================================================
+
+To check if user is logged in and protect specific routes, pass the created middleware in the specific route:
+
+example:
+
+// DELETE route:
+
+router.delete("/:id", [insert middleware here] ,async(req,res)=>{
+    try{
+        const deletedBlog = await BlogModel.findByIdAndRemove(req.params.id)
+        console.log(deletedBlog);
+        // res.send("Blog Deleted")
+        res.redirect("/")
+    } catch(error){
+        console.log(error)
+        res.status(403).send("Cannot Delete")
+    }
+})
+
+
+============================================================================
+
+In BlogShow.jsx, using a ternary operator to check if the blog author is the same as the logged in user.  If true, show the edit button, if false show nothing.
+
+{
+blog.author === loggedInUser ? (<a href={`/blog/${blog._id}/edit`} className="editBlog">Edit Blog</a>) : null
+}
