@@ -3,7 +3,10 @@ const Navbar = require("../components/Navbar")
 
 class Users extends React.Component{
     render(){
-        const {users, blog} = this.props
+        const {users, blogs} = this.props
+        console.log("BLOGS PROP",blogs)
+        console.log("BLOGS TITLEs", blogs[0].title)
+
         return(
             <body>
                 <head>
@@ -12,30 +15,25 @@ class Users extends React.Component{
 
                 <Navbar/>
                 
-                <h1>Users Page</h1>
-                <a href="/">Home</a>
+                <h1>Meet the Authors</h1>
+                
 
-                <ul>
+                <ul className="listContainer">
                     {users.map((user,idx)=>(
-                        <li key={idx}>
-                           <a>{user.username}</a>
+                        
+                        <li key={idx} className="list">
+                           <h3>{user.username}</h3>
+                            
+                            {blogs.map(blog=>user.username===blog.author?<div>{<image src={blog.authorImage} className="bioProfilePic"></image>}</div>:null)}
+                        
+                            <h4>{user.email}</h4>
                         </li>
-
                     ))}
-
-
-
                 </ul>
-
+                
             </body>
-
-
         )
-
-
     }
-
-
 }
 
 module.exports = Users

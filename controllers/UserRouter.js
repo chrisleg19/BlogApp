@@ -2,6 +2,8 @@ const express = require("express")
 const UserModel = require("../models/UserSchema")
 //importing bcryptjs: a pre-compiled version of bcrypt which we will use to encrypt passwords
 const bcrypt = require("bcryptjs")
+//importing BlogModel to use certain properties
+const BlogModel = require("../models/BlogSchema")
 
 const router = express.Router()
 
@@ -9,8 +11,10 @@ const router = express.Router()
 router.get("/", async (req,res)=>{
     try{
         const usersFromDb = await UserModel.find({})
+        //using properties from Blog model in UserRouter
+        const blogs = await BlogModel.find({})
         // res.send(users)
-        res.render("Users/Users", {users: usersFromDb})
+        res.render("Users/Users", {users: usersFromDb, blogs: blogs})
     } catch (error){
         console.log(error)
         res.send(403).send("Cannot Get All Users")
