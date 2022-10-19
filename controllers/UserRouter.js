@@ -134,10 +134,11 @@ router.get("/signout", (req, res)=>{
 
 
 //GET user by ID
-router.get("/:id", async (req,res)=>{
+router.get("/:id/edit", async (req,res)=>{
     try{
     const user = await UserModel.findById(req.params.id)
-    res.send(user)
+    // res.send(user)
+    res.render("Users/EditUser", {user: user})
     } catch(error){
         console.log(error)
         res.send(403).send("Cannot Get User")
@@ -151,7 +152,8 @@ router.get("/:id", async (req,res)=>{
 router.put("/:id", async(req, res)=>{
     try{
         const updatedUser = await UserModel.findByIdAndUpdate(req.params.id, req.body, {"returnDocument" : "after"})
-        res.send(updatedUser)
+        // res.send(updatedUser)
+        res.redirect("/user")
     }catch(error){
         console.log(error)
         res.status(403).send("Cannot PUT (update) User by ID")

@@ -3,7 +3,8 @@ const Navbar = require("../components/Navbar")
 
 class Blogs extends React.Component{
     render(){
-        const {blogs} = this.props
+        const {blogs, users} = this.props
+        console.log(users)
         // console.log(blogs)
         return(
             <body>
@@ -27,9 +28,11 @@ class Blogs extends React.Component{
                             <h3>Author:</h3> <h4>{blog.author}</h4> 
                             </div>
 
-                            <div className="bpHeaders">
+                        <div className="bpHeaders"><a href={`/blog/${blog._id}`}>{users.map(user=>blog.author===user.username?<div>{<image src={user.profilePic} className="authImg"></image>}</div>:null)}</a></div>
+
+                            {/* <div className="bpHeaders">
                                 <a href={`/blog/${blog._id}`}><image className="authImg" src={blog.authorImage} ></image></a>
-                            </div>
+                            </div> */}
                             
                             <div className="bpHeaders">
                             <h3>Likes:</h3>  <h4>{blog.likes}</h4>

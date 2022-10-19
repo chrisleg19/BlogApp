@@ -2,6 +2,8 @@
 const { application } = require("express")
 const express = require("express")
 const BlogModel = require("../models/BlogSchema")
+//importing UserModel to use certain properties
+const UserModel = require("../models/UserSchema")
 
 
 
@@ -31,8 +33,9 @@ router.get("/", async (req,res)=>{
     //.find({email:"someone@email.com"}) is an example of using a filter to find specific data in db
     //docs: https://mongoosejs.com/docs/api.html#model_Model-find
     const blogsFromDb = await BlogModel.find({})
+    const userInfo = await UserModel.find({})
     // res.send(blogs)
-    res.render("Blogs/Blogs", {blogs: blogsFromDb})
+    res.render("Blogs/Blogs", {blogs: blogsFromDb, users: userInfo})
     } catch (error){
         console.log(error);
         res.send(403).send("Cannot get")

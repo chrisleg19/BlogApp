@@ -4,8 +4,8 @@ const Navbar = require("../components/Navbar")
 class Users extends React.Component{
     render(){
         const {users, blogs} = this.props
-        console.log("BLOGS PROP",blogs)
-        console.log("BLOGS TITLEs", blogs[0].title)
+        // console.log("BLOGS PROP",blogs)
+        // console.log("BLOGS TITLEs", blogs[0].title)
 
         return(
             <body>
@@ -27,6 +27,10 @@ class Users extends React.Component{
                             {blogs.map(blog=>user.username===blog.author?<div>{<image src={blog.authorImage} className="bioProfilePic"></image>}</div>:null)}
                         
                             <h4>{user.email}</h4>
+
+                            <p>{user.bio}</p>
+
+                            <a href={`/user/${user._id}/edit`}>Edit</a>
                         </li>
                     ))}
                 </ul>
