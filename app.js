@@ -7,6 +7,7 @@ const MongoStore = require("connect-mongo")
 require("dotenv").config()
 
 
+
 const app = express()
 const PORT = process.env.PORT || 3000
 
@@ -42,13 +43,15 @@ app.engine("jsx", require("express-react-views").createEngine())
 app.use("/blog", require("./controllers/BlogRouter"))
 app.use("/user", require("./controllers/UserRouter"))
 
-
+const BlogModel = require("./models/BlogSchema")
+const UserModel = require("./models/UserSchema")
 
 //BELOW NOT NEEDED with app.use("/blog, require("./controllers/BlogRouter"))
 //Can be used a homepage
-app.get("/", (req, res)=>{
-     
-    res.render("pages/homepage")
+app.get("/", async (req, res)=>{
+     const blogsFromDb = await BlogModel.find({})
+     const userInfo = await UserModel.find ({})
+    res.render("pages/homepage", {blogs: blogsFromDb, users: userInfo})
 })
 
 

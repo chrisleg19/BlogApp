@@ -5,7 +5,30 @@ const Navbar = require("../components/Navbar")
 
 class HomePage extends React.Component{
     render(){
-        const {blogs} = this.props
+        const {blogs, users} = this.props
+        // console.log("HOME BLOGS INFO", blogs)
+        // console.log("HOME USERS INFO", users)
+        function shuffleBlogsArr(blogs, num){
+        const newBlogsArr = [...blogs].sort(()=>0.5 - Math.random())
+        return newBlogsArr.slice(0,num);
+        }
+        // console.log(shuffleBlogsArr(blogs, 3))
+        const featuredBlogsArr = shuffleBlogsArr(blogs,3)
+        // console.log("BLOG1",featuredBlogsArr[0].title)
+        // console.log("BLOG2",featuredBlogsArr[1].title)
+        // console.log("BLOG3",featuredBlogsArr[2].title)
+
+        function shuffleUsersArr(users, num){
+            const newUsersArr = [...users].sort(()=>0.5 - Math.random())
+            return newUsersArr.slice(0,num);
+            }
+
+            const featuredUsersArr = shuffleUsersArr(users,3)
+
+            // console.log("USER1",featuredUsersArr[0].username)
+            // console.log("USER2",featuredUsersArr[1].username)
+            // console.log("USER3",featuredUsersArr[2].username)
+
         return(
             <div>
                 <head>
@@ -27,37 +50,39 @@ class HomePage extends React.Component{
                 <h2 className="features">Featured Blogs</h2>
                     <div className="blogsCont">
                         <div className="borders1">
-                        <h4>Learning JavaScript 101</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto, aut sit blanditiis, fugit numquam explicabo distinctio aliquid quia animi non illo perferendis quaerat nesciunt. Maiores minus eos officiis illo perferendis, autem quod consequatur mollitia nulla praesentium, vel iste tempora delectus temporibus saepe eum necessitatibus repellat quis dicta quas commodi. Iste.</p>
-                        <h5>-Mike W. </h5>
+                        {/* <h4>Learning JavaScript 101</h4> */}
+                        {/* <h4>{blogs[Math.floor(Math.random()*blogs.length)].title.toString()}</h4> */}
+                        <h4>{featuredBlogsArr[0].title}</h4>
+                        <p>{featuredBlogsArr[0].body}</p>
+                        <h5>{featuredBlogsArr[0].author}</h5>
                         </div>
                         <div className="borders1">
-                        <h4>Intro to MERN Stack</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto, aut sit blanditiis, fugit numquam explicabo distinctio aliquid quia animi non illo perferendis quaerat nesciunt. Maiores minus eos officiis illo perferendis, autem quod consequatur mollitia nulla praesentium, vel iste tempora delectus temporibus saepe eum necessitatibus repellat quis dicta quas commodi. Iste.</p>
-                        <h5>-Chris G. </h5>
+                        <h4>{featuredBlogsArr[1].title}</h4>
+                        <p>{featuredBlogsArr[1].body}</p>
+                        <h5>{featuredBlogsArr[1].author}</h5>
                         </div>
                         <div className="borders1">
-                        <h4>Cool CSS Tips & Tricks</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto, aut sit blanditiis, fugit numquam explicabo distinctio aliquid quia animi non illo perferendis quaerat nesciunt. Maiores minus eos officiis illo perferendis, autem quod consequatur mollitia nulla praesentium, vel iste tempora delectus temporibus saepe eum necessitatibus repellat quis dicta quas commodi. Iste.</p>
-                        <h5>-Emily T. </h5>
+                        <h4>{featuredBlogsArr[2].title}</h4>
+                        <p>{featuredBlogsArr[2].body}</p>
+                        <h5>{featuredBlogsArr[2].author}</h5>
                         </div>
                     </div>
                 <br/>
                 <h2 className="features">Featured Authors</h2>
                     <div className="authorsCont">
                         <div className="borders2">
-                            <h4>Samantha W.</h4>
-                            <image className="authorPic" src="https://images.unsplash.com/photo-1628890923662-2cb23c2e0cfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c21pbGluZyUyMHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfDB8MHx8&auto=format&fit=crop&w=900&q=60">
+                            <h4>{featuredUsersArr[0].username}</h4>
+                            <image className="authorPic" src={featuredUsersArr[0].profilePic}>
                             </image>
                             
                         </div>
                         <div className="borders2">    
-                            <h4>Joel P.</h4>
-                            <image className="authorPic" src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmxhY2slMjBndXklMjBzbWlsaW5nfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=900&q=60"></image>
+                            <h4>{featuredUsersArr[1].username}</h4>
+                            <image className="authorPic" src={featuredUsersArr[1].profilePic}></image>
                         </div>
                         <div className="borders2">
-                            <h4>Will S.</h4>
-                            <image className="authorPic" src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Z3V5JTIwc21pbGluZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=900&q=60"></image>
+                            <h4>{featuredUsersArr[2].username}</h4>
+                            <image className="authorPic" src={featuredUsersArr[2].profilePic}></image>
                         </div>
                     </div>
                 </div>

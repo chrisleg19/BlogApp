@@ -4,7 +4,8 @@ const Navbar = require("../components/Navbar")
 class Blogs extends React.Component{
     render(){
         const {blogs, users} = this.props
-        console.log(users)
+        console.log("USERS DATA",users)
+        console.log("BLOGS DATA", blogs)
         // console.log(blogs)
         return(
             <body>
