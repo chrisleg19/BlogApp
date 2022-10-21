@@ -74,12 +74,20 @@ a:hover {
 .submitBtn{
   margin-top:.25em;
   width: 50%;
-  background-color: green;
-  color: ghostwhite;
+  background-color: #562B08;
+  color: orange;
+  text-shadow: .5px .5px .5px #D8D8D8;
   font-size:1rem;
   font-weight: bold;
   padding:.25em;
   border-radius: 10px;
   border: none;
   box-shadow: 2px 2px 2px #182747;
+  transition: .4s;
+}
+
+.submitBtn:hover{
+  color:ghostwhite;
+  box-shadow: 20px 20px 50px 10px green inset;
+  cursor: pointer;
 }
