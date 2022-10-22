@@ -14,7 +14,7 @@ router.get("/", async (req,res)=>{
         //using properties from Blog model in UserRouter
         const blogs = await BlogModel.find({})
         // res.send(users)
-        res.render("Users/Users", {users: usersFromDb, blogs: blogs})
+        res.render("Users/Users", {users: usersFromDb, blogs: blogs, loggedInUser: req.session.username})
     } catch (error){
         console.log(error)
         res.send(403).send("Cannot Get All Users")
@@ -138,7 +138,7 @@ router.get("/:id/edit", async (req,res)=>{
     try{
     const user = await UserModel.findById(req.params.id)
     // res.send(user)
-    res.render("Users/EditUser", {user: user})
+    res.render("Users/EditUser", {user: user, loggedInUser: req.session.username})
     } catch(error){
         console.log(error)
         res.send(403).send("Cannot Get User")

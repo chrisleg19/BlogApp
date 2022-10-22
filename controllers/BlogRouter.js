@@ -1,5 +1,5 @@
 //bring in express
-const { application } = require("express")
+// const { application } = require("express")
 const express = require("express")
 const BlogModel = require("../models/BlogSchema")
 //importing UserModel to use certain properties
@@ -13,16 +13,8 @@ const UserModel = require("../models/UserSchema")
 const router = express.Router()
 
 
-//Add Privacy to this router or routes
-//checking to see if user is signed in, if true=>continue routes, if false=>redirect to ("/login")
-//created middleware function (coming from session in UserRouter.js)
-router.use((req, res, next)=>{
-    if (req.session.loggedIn){
-        next()
-    } else {
-        res.redirect("/user/login")
-    }
-})
+
+
 
 
 //========= GET: Get all Blogs 
@@ -35,7 +27,7 @@ router.get("/", async (req,res)=>{
     const blogsFromDb = await BlogModel.find({})
     const userInfo = await UserModel.find({})
     // res.send(blogs)
-    res.render("Blogs/Blogs", {blogs: blogsFromDb, users: userInfo})
+    res.render("Blogs/Blogs", {blogs: blogsFromDb, users: userInfo, loggedInUser: req.session.username})
     } catch (error){
         console.log(error);
         res.send(403).send("Cannot get")
@@ -43,12 +35,18 @@ router.get("/", async (req,res)=>{
 })
 
 
+
+
+
+
+
 //=========== POST: Create new Blog
 
 //render Create New Blog Form
 router.get("/new", async(req,res)=>{
     try{
-        res.render("Blogs/NewBlog")
+        const foundUser = await UserModel.find({})
+        res.render("Blogs/NewBlog",{loggedInUser: req.session.username, users: foundUser})
     }catch(error){
         console.log(error)
         res.status(403).send("Cannot Get NewBlog Form")
@@ -103,13 +101,16 @@ router.post("/", async (req, res)=>{
 // })
 
 
+
+
+
 //============ GET: Get Blog by ID 
 
 //because this is part of the blogs router, its already prefixed with router.get("/blogs/:id", (req,res)=>{})...but I don't have to input
 router.get("/:id", async(req, res)=>{
     //console log the session object to see the properties available for destructuring. 
         //Note: we set these properties in the UserRouter.js (req.session.username = user.username AND req.session.loggedIn = true)
-    console.log("session object",req.session)
+    // console.log("session object",req.session)
     try{
         const blogInDb = await BlogModel.findById(req.params.id)
         // res.send(blog)
@@ -123,6 +124,24 @@ router.get("/:id", async(req, res)=>{
 
 
 
+//Add Privacy to this router or routes
+//checking to see if user is signed in, if true=>continue routes, if false=>redirect to ("/login")
+//created middleware function (coming from session in UserRouter.js)
+router.use((req, res, next)=>{
+    if (req.session.loggedIn){
+        next()
+    } else {
+        res.redirect("/user/login")
+    }
+})
+
+
+
+
+
+
+
+
 //============= DELETE:
 
 router.delete("/:id", async(req,res)=>{
@@ -130,7 +149,7 @@ router.delete("/:id", async(req,res)=>{
         const deletedBlog = await BlogModel.findByIdAndRemove(req.params.id)
         console.log(deletedBlog);
         // res.send("Blog Deleted")
-        res.redirect("/")
+        res.redirect("/blog")
     } catch(error){
         console.log(error)
         res.status(403).send("Cannot Delete")
@@ -143,9 +162,10 @@ router.delete("/:id", async(req,res)=>{
 //Example with async await:  
 
 router.get('/:id/edit', async (req, res) => {
-    try {
+    try {  
       const foundBlog = await BlogModel.findById(req.params.id);
-      res.render('Blogs/EditBlog', { blog: foundBlog });
+      const foundUser = await UserModel.find({})
+      res.render('Blogs/EditBlog', { blog: foundBlog, users: foundUser, loggedInUser: req.session.username});
     } catch (error) {
       console.log(error);
       res.status(403).send('cannot get edit page')

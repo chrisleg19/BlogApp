@@ -2,7 +2,7 @@ const React = require("react")
 
 class Navbar extends React.Component{
     render(){
-        const {loggedInUser} = this.props
+        const {loggedInUser, newBlog} = this.props
         return(
             <>
             <head>
@@ -14,9 +14,13 @@ class Navbar extends React.Component{
                 <a href="/">Home</a>
                 <a href="/blog">Blogs</a>
                 <a href="/user">Authors</a>
-                <a href="/user/signup">Sign Up / Log In</a>
+
+                {loggedInUser?(<a href="/blog/new">New Blog</a>):null}
+
+                {loggedInUser?null:(<a href="/user/signup">Sign Up / Log In</a>)}
 
                 {loggedInUser && <a href="/user/signout">Log Out</a>}
+
                 </div>
 
                 <div className = "welcome">

@@ -5,7 +5,7 @@ const Navbar = require("../components/Navbar")
 
 class HomePage extends React.Component{
     render(){
-        const {blogs, users} = this.props
+        const {blogs, users, loggedInUser} = this.props
         // console.log("HOME BLOGS INFO", blogs)
         // console.log("HOME USERS INFO", users)
         function shuffleBlogsArr(blogs, num){
@@ -35,7 +35,7 @@ class HomePage extends React.Component{
                     <link rel="stylesheet" href="/CSS/homepage.css"/>
                 </head>
                 
-                <Navbar />
+                <Navbar loggedInUser={loggedInUser} />
 
                 <h1>Software Engineering: <br/> <span className="levelOne">Level 1</span></h1>
 

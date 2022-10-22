@@ -3,9 +3,9 @@ const Navbar = require("../components/Navbar")
 
 class Blogs extends React.Component{
     render(){
-        const {blogs, users} = this.props
-        console.log("USERS DATA",users)
-        console.log("BLOGS DATA", blogs)
+        const {blogs, users, loggedInUser, newBlog} = this.props
+        // console.log("USERS DATA",users)
+        // console.log("BLOGS DATA", blogs)
         // console.log(blogs)
         return(
             <body>
@@ -13,7 +13,11 @@ class Blogs extends React.Component{
                     <link rel="stylesheet" href="/CSS/blogs.css"/> 
                 </head>
 
-                <Navbar/>
+                <Navbar loggedInUser={loggedInUser} newBlog={newBlog}/>
+
+                {/* {blogs.map(blog=>blog.author===loggedInUser?(<div className="createNewDiv">
+                <a className="createNewBtn" href="/blog/new">Create New Blog</a>
+                </div>):null)} */}
 
                 <h1>All Blogs</h1>
                 
@@ -29,7 +33,7 @@ class Blogs extends React.Component{
                              <h4>{blog.author}</h4> 
                             </div>
 
-                        <div className="bpHeaders"><a href={`/blog/${blog._id}`}>{users.map(user=>blog.author===user.username?<div>{<image src={user.profilePic} className="authImg"></image>}</div>:null)}</a></div>
+                        <div className="bpHeaders"><a href={`/blog/${blog._id}`}>{users.map(user=>blog.author===user.username?<div key={idx}>{<image src={user.profilePic} className="authImg" key={idx}></image>}</div>:null)}</a></div>
 
                             {/* <div className="bpHeaders">
                                 <a href={`/blog/${blog._id}`}><image className="authImg" src={blog.authorImage} ></image></a>
@@ -44,9 +48,7 @@ class Blogs extends React.Component{
                     ))}
 
                 </ul>
-                <div className="createNewDiv">
-                <a className="createNewBtn" href="/blog/new">Create New Blog</a>
-                </div>
+                
                 
             </body>
 

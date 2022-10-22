@@ -4,7 +4,7 @@ const Navbar = require("../components/Navbar")
 
 class EditUser extends React.Component{
     render(){
-        const {user} = this.props
+        const {user, loggedInUser} = this.props
         // console.log("USER PROP",user)
         return(
             <body>
@@ -13,7 +13,7 @@ class EditUser extends React.Component{
                 <link rel="stylesheet" href="/CSS/newblog.css"/> 
                 </head>
 
-                <Navbar/>
+                <Navbar loggedInUser={loggedInUser}/>
 
                 <h1>Edit User Page</h1>
 

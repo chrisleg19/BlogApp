@@ -133,13 +133,14 @@ a:hover {
 
 .createNewBtn{
     background-color:#562B08 ;
-    text-shadow: .5px .5px .5px #D8D8D8;
-    padding: .5em ;
+    text-shadow: .4px .4px .4px #D8D8D8;
+    padding: .2em ;
     border-radius: 10px;
     font-family: Poppins;
-    width: 50%;
+    width: 10%;
     text-align: center; 
     transition: .4s;
+    font-size: 15px;
 }
 
 .createNewBtn:hover{

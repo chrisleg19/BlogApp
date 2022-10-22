@@ -6,7 +6,7 @@ const blogSchema = new mongoose.Schema({
     author: {type: String, required: true},
     likes: {type: Number, default: 0},
     sponsored: {type: Boolean, default: false},
-    authorImage:{type: String}
+    // authorImage:{type: String}
 },
 { timestamps: { createdAt: 'created_at' } })
 // { timestamps: true} - can also be used (default returns date)

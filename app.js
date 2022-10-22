@@ -51,7 +51,7 @@ const UserModel = require("./models/UserSchema")
 app.get("/", async (req, res)=>{
      const blogsFromDb = await BlogModel.find({})
      const userInfo = await UserModel.find ({})
-    res.render("pages/homepage", {blogs: blogsFromDb, users: userInfo})
+    res.render("pages/homepage", {blogs: blogsFromDb, users: userInfo, loggedInUser: req.session.username})
 })
 
 

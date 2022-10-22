@@ -223,3 +223,4 @@ package.json before update:
 }
 
 
+<h5>Profile Pic:</h5> <input className="profilePicInput" type="text" name="authorImage" defaultValue={blog.authorImage}></input>

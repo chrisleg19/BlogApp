@@ -3,7 +3,7 @@ const Navbar = require("../components/Navbar")
 
 class Users extends React.Component{
     render(){
-        const {users, blogs} = this.props
+        const {users, blogs, loggedInUser} = this.props
         // console.log("BLOGS PROP",blogs)
         // console.log("BLOGS TITLEs", blogs[0].title)
 
@@ -13,7 +13,7 @@ class Users extends React.Component{
                 <link rel="stylesheet" href="/CSS/users.css"/>
                 </head>
 
-                <Navbar/>
+                <Navbar loggedInUser={loggedInUser}/>
                 
                 <h1>Meet the Authors</h1>
                 
@@ -24,13 +24,15 @@ class Users extends React.Component{
                         <li key={idx} className="list">
                            <h3>{user.username}</h3>
                             
-                            {blogs.map(blog=>user.username===blog.author?<div>{<image src={blog.authorImage} className="bioProfilePic"></image>}</div>:null)}
+                            {blogs.map(blog=>user.username===blog.author?<div key={idx}>{<image src={user.profilePic} className="bioProfilePic" key={idx}></image>}</div>:null)}
                         
                             <h4>{user.email}</h4>
 
                             <p>{user.bio}</p>
 
-                            <a href={`/user/${user._id}/edit`}>Edit</a>
+                            {user.username===loggedInUser?(<a href={`/user/${user._id}/edit`}>Edit</a>):null}
+
+
                         </li>
                     ))}
                 </ul>
